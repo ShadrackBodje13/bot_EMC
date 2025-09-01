@@ -145,7 +145,7 @@ if user_input:
     else:
         st.write(response)
 
-    st.session_state.messages.append({"role": "bot", "content": response})
+    st.session_state.messages.append({"role": "Eglise Methodiste Canaan Paris", "content": response})
 
 st.markdown("---")
 st.header("Historique de la conversation")
@@ -153,4 +153,4 @@ for message in st.session_state.messages:
     if message["role"] == "user":
         st.markdown(f"**Vous :** {message['content']}")
     else:
-        st.markdown(f"**Bot :** {message['content']}")
+        st.markdown(f"**Eglise Methodiste Canaan Paris :** {message['content']}")
