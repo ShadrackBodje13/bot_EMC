@@ -12,7 +12,8 @@ faq = load_json("faq.json")
 events = load_json("events.json")
 leaders = load_json("leaders.json")
 values = load_json("values.json")
-bank_info = load_json("bank_info.json")  # Coordonnées bancaires
+bank_info = load_json("bank_info.json")
+socials = load_json("socials.json")  # Réseaux sociaux
 
 # Configuration page
 st.set_page_config(page_title="Chatbot Eglise Méthodiste Canaan Paris", page_icon=":church:")
@@ -57,6 +58,12 @@ def show_values():
     st.subheader("Nos valeurs")
     for val in values:
         st.write(f"- {val}")
+
+def show_socials():
+    st.subheader(socials["title"])
+    st.write(socials["description"])
+    for network in socials["networks"]:
+        st.markdown(f"- {network['icon']} **{network['name']}** : [{network['handle']}]({network['url']})")
 
 def find_best_faq_match(question, faq_list, threshold=0.5):
     questions = [item["question"].lower() for item in faq_list]
@@ -105,6 +112,11 @@ def chatbot_response(question):
     if any(word in question_lower for word in ["lieu", "adresse", "local", "où", "ou", "emplacement", "endroit"]):
         return "Notre lieu de culte est au 24 avenue Henri Barbusse, 93000 Bobigny."
 
+    # Réseaux sociaux
+    if any(word in question_lower for word in ["réseaux sociaux", "reseaux sociaux", "instagram", "facebook", "tiktok", "réseau social", "social media"]):
+        return "AFFICHER_SOCIAUX"
+
+    # Dons et coordonnées bancaires
     if any(word in question_lower for word in ["don", "offrande", "collecte", "virement", "banque", "iban", "rib", "coordonnées bancaires"]):
         return (
             "Voici les coordonnées bancaires pour vos dons ou virements :\n"
@@ -122,6 +134,7 @@ def chatbot_response(question):
                 "- Quelles sont les valeurs de l'église ?\n"
                 "- Comment puis-je contacter le secrétariat ?\n"
                 "- Où se situe le lieu de culte ?\n"
+                "- Quels sont vos réseaux sociaux ?\n"
                 "- Affichez-moi la FAQ\n"
                 "- Comment faire un don ou un virement ?")
 
@@ -136,6 +149,8 @@ if user_input:
 
     if response == "AFFICHER_FAQ":
         show_faq()
+    elif response == "AFFICHER_SOCIAUX":
+        show_socials()
     elif response == "Voici la liste des événements à venir.":
         show_events()
     elif response == "Voici les responsables de l'église.":
@@ -145,7 +160,7 @@ if user_input:
     else:
         st.write(response)
 
-    st.session_state.messages.append({"role": "Eglise Methodiste Canaan Paris", "content": response})
+    st.session_state.messages.append({"role": "bot", "content": response})
 
 st.markdown("---")
 st.header("Historique de la conversation")
@@ -153,4 +168,4 @@ for message in st.session_state.messages:
     if message["role"] == "user":
         st.markdown(f"**Vous :** {message['content']}")
     else:
-        st.markdown(f"**Eglise Methodiste Canaan Paris :** {message['content']}")
+        st.markdown(f"**Bot :** {message['content']}")

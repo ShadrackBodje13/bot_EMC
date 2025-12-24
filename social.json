@@ -1,0 +1,36 @@
+{
+  "title": "Nos réseaux sociaux",
+  "description": "Suivez-nous sur nos réseaux sociaux officiels pour rester informé des activités de l'église.",
+  "networks": [
+    {
+      "name": "Instagram",
+      "handle": "eglise_methodiste_canaan_paris",
+      "url": "https://www.instagram.com/eglise_methodiste_canaan_paris?igsh=dGkwbWx4eDdjYnJ5&utm_source=qr",
+      "icon": "📸"
+    },
+    {
+      "name": "Facebook",
+      "handle": "Eglise Methodiste Canaan Paris",
+      "url": "https://www.facebook.com/profile.php?id=61578324579713",
+      "icon": "👍"
+    },
+    {
+      "name": "TikTok",
+      "handle": "@eglise.methodiste3",
+      "url": "https://www.tiktok.com/@eglise.methodiste3",
+      "icon": "🎵"
+    },
+    {
+      "name": "Whatsapp Channel",
+      "handle": "Channel Whatsapp",
+      "url": "https://whatsapp.com/channel/0029VbAhHSKE50UbnkfzVE45",
+      "icon": "👍"
+    },
+    {
+      "name": "Youtube",
+      "handle": "@EgliseMethodisteCanaanParis",
+      "url": "https://youtube.com/@eglisemethodistecanaanparis?si=20VPqFkfPZP1wxaT",
+      "icon": "🎵"
+    }
+  ]
+}
